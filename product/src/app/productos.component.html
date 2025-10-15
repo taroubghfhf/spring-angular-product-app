@@ -1,0 +1,13 @@
+<h1>{{ titulo }}</h1>
+
+<div *ngIf="productos.isLoading()">Cargando productos...</div>
+
+<div *ngIf="productos.error()">
+  Error: {{ productos.error()?.message }}
+</div>
+
+<ul *ngIf="productos.value()">
+  <li *ngFor="let p of productos.value()">
+    <strong>{{ p.name }}</strong> — {{ p.category }} — ${{ p.price | number:'1.0-0' }}
+  </li>
+</ul>
